@@ -2,9 +2,17 @@
 pipeline {
   agent any
   stages {
-    stage('Test CD') {
-      steps {
-        hello()
+    parallel {
+      stage('Stage1') {
+        steps {
+          hello()
+        }
+      }
+      
+      stage('Stage2') {
+        steps {
+          hello()
+        }
       }
     }
   }
