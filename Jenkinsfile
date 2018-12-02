@@ -2,7 +2,7 @@
 pipeline {
   agent any
   stages {
-    stage('Test') {
+    parallel {
       stage('Dont display', false) { 
         steps {
           hello()
