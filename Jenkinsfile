@@ -2,15 +2,17 @@
 pipeline {
   agent any
   stages {
-    stage('Dont display', false) { 
-      steps {
-        hello()
+    stage('Test') {
+      stage('Dont display', false) { 
+        steps {
+          hello()
+        }
       }
-    }
-    
-    stage('Display', true) { 
-      steps {
-        hello()
+
+      stage('Display', true) { 
+        steps {
+          hello()
+        }
       }
     }
   }
