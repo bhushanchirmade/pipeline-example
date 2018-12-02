@@ -23,5 +23,5 @@ pipeline {
 }
 
 def stage(name, execute, block) {
-    return stage(name, execute ? block : {})
+    return stage(name, execute ? block : { echo "Hello" })
 }
