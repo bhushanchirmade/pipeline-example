@@ -5,16 +5,30 @@ pipeline {
     stage('Deploy') {
       steps {
         script {
-          stage('Dont display', false) { 
+          stage('Deploy: dev', true) { 
               hello()
+          }
           
+          stage('Test: dev', true) { 
+              hello()
           }
 
-          stage('Display', true) { 
-           
+          stage('Deploy: trial', true) { 
               hello()
-            
           }
+          
+          stage('Test: trial', true) { 
+              hello()
+          }
+          
+          stage('Deploy: prod', false) { 
+              hello()
+          }
+          
+          stage('Test: prod', false) { 
+              hello()
+          }
+
         }
       }
     }
