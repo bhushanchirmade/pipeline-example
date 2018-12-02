@@ -6,15 +6,14 @@ pipeline {
       steps {
         script {
           stage('Dont display', false) { 
-            steps {
               hello()
-            }
+          
           }
 
           stage('Display', true) { 
-            steps {
+           
               hello()
-            }
+            
           }
         }
       }
