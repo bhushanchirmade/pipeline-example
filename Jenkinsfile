@@ -2,16 +2,24 @@
 pipeline {
   agent any
   stages {
-    parallel {
-      stage('Stage1') {
-        steps {
-          hello()
-        }
+    stage('Deploy') {
+      steps {
+        hello()
       }
-      
-      stage('Stage2') {
-        steps {
-          hello()
+    }
+    
+    stage('Tests') {
+      parallel {
+        stage('Performance') {
+          steps {
+            hello()
+          }
+        }
+
+        stage('Regression') {
+          steps {
+            hello()
+          }
         }
       }
     }
