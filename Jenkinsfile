@@ -2,22 +2,20 @@
 pipeline {
   agent any
   stages {
-    parallel {
-      stage('Dont display', false) { 
-        steps {
-          hello()
-        }
+    stage('Dont display', false) { 
+      steps {
+        hello()
       }
+    }
 
-      stage('Display', true) { 
-        steps {
-          hello()
-        }
+    stage('Display', true) { 
+      steps {
+        hello()
       }
     }
   }
 }
 
 def stage(name, execute, block) {
-    return stage(name, execute ? block : {echo "skipped stage $name"})
+    return stage(name, execute ? block : {})
 }
