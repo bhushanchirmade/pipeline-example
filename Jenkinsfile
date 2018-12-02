@@ -9,18 +9,14 @@ pipeline {
               hello()
           }
           
-          stage('Test: dev', true) { 
-              parallel {
-                stage('Performance') {
-                  hello() 
-                  sleep 5
-                }
-                
-                stage('Regression') {
-                  hello() 
-                  sleep 5
-                }
-              }
+          stage('Test: dev', true) {
+            parallel Performance: {
+              hello()
+              sleep 5
+            }, Regression: {
+              hello()
+              sleep 5
+            }
           }
 
           stage('Deploy: trial', true) { 
