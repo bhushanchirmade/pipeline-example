@@ -2,30 +2,20 @@
 pipeline {
   agent any
   stages {
-    stage('Continuous Deployment') {
-      stages('CD') {
-        stage('Deploy') {
-          steps {
-            hello()
-          }
-        }
-
-        stage('Tests') {
-          parallel {
-            stage('Performance') {
-              steps {
-                hello()
-              }
-            }
-
-            stage('Regression') {
-              steps {
-                hello()
-              }
-            }
-          }
-        }
+    stage('Dont display', false) { 
+      steps {
+        hello()
+      }
+    }
+    
+    stage('Display', true) { 
+      steps {
+        hello()
       }
     }
   }
+}
+
+def stage(name, execute, block) {
+    return stage(name, execute ? block : {echo "skipped stage $name"})
 }
