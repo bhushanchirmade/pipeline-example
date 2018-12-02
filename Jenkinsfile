@@ -2,23 +2,27 @@
 pipeline {
   agent any
   stages {
-    stage('Deploy') {
-      steps {
-        hello()
-      }
-    }
-    
-    stage('Tests') {
-      parallel {
-        stage('Performance') {
+    stage('Continuous Deployment') {
+      stages('CD') {
+        stage('Deploy') {
           steps {
             hello()
           }
         }
 
-        stage('Regression') {
-          steps {
-            hello()
+        stage('Tests') {
+          parallel {
+            stage('Performance') {
+              steps {
+                hello()
+              }
+            }
+
+            stage('Regression') {
+              steps {
+                hello()
+              }
+            }
           }
         }
       }
