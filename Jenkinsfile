@@ -22,5 +22,9 @@ pipeline {
 }
 
 def stage(name, execute, block) {
-    return stage(name, execute ? block : { echo "Hello" })
+  if(execute) {
+    return stage(name, block)
+  } else {
+    return
+  }
 }
