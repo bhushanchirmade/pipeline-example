@@ -2,9 +2,12 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize Deployment') {
+    stage('Prepare') {
       steps {
+        hello()
+        
         script {
+          // Below is dynamic script
           stage('Deploy: dev', true) { 
               hello()
           }
