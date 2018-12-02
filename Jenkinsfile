@@ -10,7 +10,17 @@ pipeline {
           }
           
           stage('Test: dev', true) { 
-              hello()
+              parallel {
+                stage('Performance') {
+                  hello() 
+                  sleep 5
+                }
+                
+                stage('Regression') {
+                  hello() 
+                  sleep 5
+                }
+              }
           }
 
           stage('Deploy: trial', true) { 
