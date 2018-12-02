@@ -2,7 +2,7 @@
 pipeline {
   agent any
   stages {
-    stage('Deploy') {
+    stage('Initialize Deployment') {
       steps {
         script {
           stage('Deploy: dev', true) { 
