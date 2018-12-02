@@ -12,10 +12,10 @@ pipeline {
           stage('Test: dev', true) {
             parallel Performance: {
               hello()
-              sleep 5
+              sleep 10
             }, Regression: {
               hello()
-              sleep 5
+              sleep 20
             }
           }
 
