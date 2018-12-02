@@ -10,16 +10,14 @@ pipeline {
           // Below is dynamic script
           stage('Deploy: dev', true) { 
               hello()
-          }
-          
-          stage('Test: dev', true) {
-            parallel Performance: {
-              hello()
-              sleep 10
-            }, Regression: {
-              hello()
-              sleep 20
-            }
+              
+              parallel Performance: {
+                hello()
+                sleep 10
+              }, Regression: {
+                hello()
+                sleep 20
+              }
           }
 
           stage('Deploy: trial', true) { 
